@@ -40,7 +40,7 @@ public class ProfileServlet extends HttpServlet {
 
       List<PostRespDto> posts = postService.getUserPostsById(id);
 
-      objectMapper.writeValue(resp.getWriter() , "=> " + posts);
+      objectMapper.writeValue(resp.getWriter() ,  posts);
 
     }
 }

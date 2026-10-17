@@ -26,8 +26,12 @@ public class RegistrationServlet extends HttpServlet {
         UserReqDto userReqDto = objectMapper.readValue(req.getReader() , UserReqDto.class);
 
 
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.setStatus(HttpServletResponse.SC_OK    );
+
         userService.create(userReqDto);
-        objectMapper.writeValue(resp.getWriter() , "Dear " + userReqDto.getUsername() + " Your Account Has Been Create Successfully");
+        objectMapper.writeValue(resp.getWriter() , "Dear    " + userReqDto.getUsername() + "    Your Account Has Been Create Successfully");
 
 
     }

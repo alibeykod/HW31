@@ -3,9 +3,7 @@ package ir.maktabsharif.repository;
 import ir.maktabsharif.dao.PostDAO;
 import ir.maktabsharif.dto.PostRespDto;
 import ir.maktabsharif.util.HibernateUtil;
-import jdk.javadoc.internal.doclets.toolkit.util.ClassTree;
 
-import java.lang.Record;
 import java.util.List;
 
 public class PostRepoImpl implements PostRepo{
