@@ -18,6 +18,7 @@
     <button type="submit" id="submit" name="submit"> Create </button>
 </form>
 <p id="resultMessage" style="color: green;"></p>
+<p>If You Had Registration Before Go To <a href="login.jsp">Login</a> Page</p>
 <script src="registration.js"></script>
 </body>
 </html>

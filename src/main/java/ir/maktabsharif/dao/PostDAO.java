@@ -20,7 +20,7 @@ public class PostDAO {
 
     private String title;
 
-    private String TextOfPost;
+    private String textOfPost;
 
     private LocalDateTime createdAt;
 

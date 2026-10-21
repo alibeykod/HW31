@@ -41,7 +41,7 @@ public class UserRepoImpl implements UserRepo{
 
     @Override
     public void delete(Long id) {
-        HibernateUtil.read(entityManager -> {
+        HibernateUtil.inTxReturn(entityManager -> {
             UserDAO foundToRemove = entityManager.find(UserDAO.class , id);
             entityManager.remove(foundToRemove);
             return id;

@@ -28,7 +28,7 @@ public class UserDAO {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "userDAO")
     @ToString.Exclude
     @Builder.Default
     private List<PostDAO> postDAO = new ArrayList<>();

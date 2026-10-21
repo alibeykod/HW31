@@ -32,9 +32,14 @@ UserService userService = new UserServiceImpl();
         if (isAuthenticate){
             HttpSession session = req.getSession();
             UserRespDto userResp = userService.findByUsername(userReqDto);
-            session.setAttribute("userId" , userResp.getId());
-            objectMapper.writeValue(resp.getWriter() ,"Dear " + userReqDto.getUsername() + " Welcome");
-            resp.sendRedirect("/profile");
+            session.setAttribute("id", userResp.getId());
+            session.setAttribute("username" , userResp.getUsername());
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.setStatus(HttpServletResponse.SC_OK);
+
+            objectMapper.writeValue(resp.getWriter(), "Dear " + userResp.getUsername() + " Welcome");
         }
+
     }
 }

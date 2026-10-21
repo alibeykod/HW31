@@ -6,6 +6,8 @@ import ir.maktabsharif.dto.PostReqDto;
 import ir.maktabsharif.dto.PostRespDto;
 import ir.maktabsharif.repository.PostRepoImpl;
 
+import ir.maktabsharif.dao.UserDAO;
+import ir.maktabsharif.repository.UserRepoImpl;
 import java.util.List;
 
 public class PostServiceImpl implements PostService {
@@ -13,9 +15,14 @@ public class PostServiceImpl implements PostService {
     private final PostRepoImpl postRepo = new PostRepoImpl();
 
     @Override
-    public PostRespDto create(PostReqDto postReqDto) {
-        PostDAO postDAO = postRepo.create(Convertor.postReqDtoToPostDao(postReqDto));
-        return Convertor.postDaoToPostRespDto(postDAO);
+    public PostRespDto create(PostReqDto postReqDto , Long id) {
+        PostDAO postDAO = Convertor.postReqDtoToPostDao(postReqDto);
+
+        UserDAO userDAO = new UserRepoImpl().findById(id);
+        postDAO.setUserDAO(userDAO);
+
+        PostDAO savedPost = postRepo.create(postDAO);
+        return Convertor.postDaoToPostRespDto(savedPost);
     }
 
     @Override
@@ -42,7 +49,11 @@ public class PostServiceImpl implements PostService {
     public void delete(Long id) {
         postRepo.delete(id);
     }
+
+    @Override
     public List<PostRespDto> getUserPostsById(Long id){
-        return postRepo.getUserPostsById(id);
-    }
+        return postRepo.getUserPostsById(id)
+                .stream()
+                .map(Convertor::postDaoToPostRespDto)
+                .toList();    }
 }

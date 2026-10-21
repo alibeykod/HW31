@@ -2,6 +2,8 @@ package ir.maktabsharif.dto;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,4 +15,6 @@ public class PostRespDto {
     private String title;
 
     private String TextOfPost;
+
+    private LocalDateTime createdAt;
 }

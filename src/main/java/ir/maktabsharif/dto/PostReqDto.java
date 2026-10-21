@@ -10,5 +10,5 @@ import lombok.*;
 public class PostReqDto {
     private String title;
 
-    private String TextOfPost;
+    private String textOfPost;
 }
